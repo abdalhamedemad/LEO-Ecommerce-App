@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const slides = [
@@ -31,9 +31,19 @@ const slides = [
 ];
 export const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 3000);
+    // Cleanup on unmount
+    return () => clearInterval(interval);
+  }, []);
   return (
-    <div className="h-[calc(100vh-80px)] overflow-hidden">
-      <div className="w-max h-full flex transition-all ease-in-out duration-1000">
+    <div className="h-[calc(100vh-80px)] overflow-hidden relative">
+      <div
+        className="w-max h-full flex transition-all ease-in-out duration-1000"
+        style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
+      >
         {slides.map((slide) => (
           <div
             className={`${slide.bg} w-screen h-full flex flex-col gap-16 xl:flex-row`}
@@ -66,6 +76,23 @@ export const Slider = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="absolute m-auto bottom-8  left-1/2 flex gap-4">
+        {slides.map((slide, index) => {
+          return (
+            <div
+              className={` w-3 h-3 rounded-full ring-1 ring-gray-600 cursor-pointer flex items-center justify-center ${
+                currentSlide === index ? "scale-150" : ""
+              }`}
+              key={slide.id}
+              onClick={() => setCurrentSlide(index)}
+            >
+              {currentSlide === index && (
+                <div className="w-[6px] h-[6px] rounded-full bg-gray-600"></div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
