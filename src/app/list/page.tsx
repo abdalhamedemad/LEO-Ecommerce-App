@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { Filter } from "@/components/BasicComponents/Filter";
 import { ProductList } from "@/components/Product/ProductList";
-const ListPage = () => {
+import { WixClientServer } from "@/lib/wixClientServer";
+const ListPage = async ({ searchParams }: { searchParams: any }) => {
+  const wixClient = await WixClientServer();
   return (
     <div className=" px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
       <div className="hidden bg-pink-50 px-4 sm:flex justify-between h-64">
