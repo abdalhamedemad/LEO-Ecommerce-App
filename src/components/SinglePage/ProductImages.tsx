@@ -19,14 +19,14 @@ const images = [
     url: "https://images.pexels.com/photos/34794612/pexels-photo-34794612.jpeg",
   },
 ];
-const ProductImages = () => {
+const ProductImages = ({ items }: { items: any }) => {
   const [mainImageIndex, setMainImageIndex] = useState(0);
   return (
     <div>
       <div className="h-[500px] relative">
         {/* size 50vw means the image will take up 50% of the viewport width i.e size is the max width*/}
         <Image
-          src={images[mainImageIndex].url}
+          src={items[mainImageIndex].image?.url}
           alt="Product Image"
           fill
           sizes="50vw"
@@ -35,10 +35,10 @@ const ProductImages = () => {
         />
       </div>
       <div className="flex justify-between gap-4 mt-8">
-        {images.map((image, index) => (
-          <div key={image.id} className="w-1/4 h-32 relative cursor-pointer ">
+        {items.map((item: any, index: number) => (
+          <div key={item._id} className="w-1/4 h-32 relative cursor-pointer ">
             <Image
-              src={image.url}
+              src={item?.image?.url}
               alt={`Product Image ${index + 1}`}
               fill
               sizes="30vw"
