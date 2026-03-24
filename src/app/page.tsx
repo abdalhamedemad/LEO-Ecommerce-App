@@ -26,9 +26,9 @@ const HomePage = async () => {
         <h1 className="text-2xl">Featured product</h1>
         <Suspense fallback={<div>Loading...</div>}>
           <ProductList
-            // ! means we are sure that this env variable will be present
-            categoryId={process.env.FEATURED_PRODUCT_CATEGORY_ID!}
-            limit={4}
+          // ! means we are sure that this env variable will be present
+          // categoryId={process.env.FEATURED_PRODUCT_CATEGORY_ID!}
+          // limit={4}
           />
         </Suspense>
       </div>

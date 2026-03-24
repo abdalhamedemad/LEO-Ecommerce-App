@@ -14,7 +14,7 @@ const resolveWixImage = (wixUrl: string) => {
 export const CategoryItem = ({ category }: { category: any }) => {
   return (
     <Link
-      href={`/list?cat=${category.slug}`}
+      href={`/list?cat=${category._id}&catName=${category.name}`}
       className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 xl:w-1/6"
     >
       <div className="relative bg-slate-100 w-full h-96">

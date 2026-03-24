@@ -25,7 +25,7 @@ export const CategoryList = async () => {
   // Step 4: fetch each category by ID
   const categories = await Promise.all(
     uniqueCategoryIds.map((id) =>
-      wixClient.categories.getCategory(id, root.treeReference, {
+      wixClient.categories.getCategory(id, root.treeReference as any, {
         fields: ["BREADCRUMBS_INFO"],
       }),
     ),

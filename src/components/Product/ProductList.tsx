@@ -4,8 +4,8 @@ import { WixClientServer } from "@/lib/wixClientServer";
 import { products } from "@wix/stores";
 
 interface ProductListProps {
-  categoryId: string;
-  limit?: number;
+  categoryID?: string;
+  limiit?: number;
 }
 const Product_PER_PAGE = 20;
 export const ProductList = async ({ categoryID, limiit }: ProductListProps) => {
