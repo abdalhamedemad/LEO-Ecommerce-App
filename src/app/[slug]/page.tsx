@@ -35,7 +35,7 @@ const SinglePage = async ({
           <h1 className="text-4xl font-medium">{product.name}</h1>
           <p
             className="text-gray-500"
-            dangerouslySetInnerHTML={{ __html: product.description }}
+            dangerouslySetInnerHTML={{ __html: product.description || "" }}
           ></p>
           <div className="h-[2px] bg-gray-100" />
           <div className="flex items-center gap-4">
@@ -61,7 +61,9 @@ const SinglePage = async ({
               <h4 className="font-lg mb-4 uppercase font-bold">
                 {section.title}
               </h4>
-              <p dangerouslySetInnerHTML={{ __html: section.description }}></p>
+              <p
+                dangerouslySetInnerHTML={{ __html: section.description || "" }}
+              ></p>
             </div>
           ))}
         </div>
